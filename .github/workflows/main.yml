@@ -1,0 +1,20 @@
+name: Build and Notify
+on:
+  push:
+  pull_request:
+    types: [opened,closed]
+  issues:
+    types: [opened, closed]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Notifyre
+        uses: athul/py-twilio-action@master
+        with:
+          from_num: ${{ secrets.FROM_NUM }}
+          to_num: ${{secrets.TO_NUM }}
+        env:
+         TWILIO_ACCOUNT_SID: ${{ secrets.TWILIO_ACCOUNT_SID }}
+         TWILIO_AUTH_TOKEN: ${{ secrets.TWILIO_AUTH_TOKEN }}
