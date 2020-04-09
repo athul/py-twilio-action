@@ -1,6 +1,5 @@
 name: Build and Notify
 on:
-  push:
   pull_request:
     types: [opened,closed]
   issues:
