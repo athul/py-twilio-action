@@ -1,0 +1,39 @@
+name: "Twilio with Python Action"
+description: "Send sms to your mobile when a push occurs in the master branch"
+author: "athul"
+branding:
+  icon: message-square
+  color: yellow
+
+inputs:
+  from_num:
+    description: "The twilio number from which the sms should be sent"
+    required: true
+  to_num:
+    description: "your aws key id"
+    required: true
+  twilio_account_sid:
+    description: "Twilio Account SID from twilio console"
+    required: true
+  twilio_auth_token:
+    description: "Twilio Authentication token from console"
+    required: true
+  iutitle: 
+    description: 'Issue Title'
+    default: ${{ github.event.issue.title }}
+  iunum:
+    description: 'Issue Number'
+    default: ${{ github.event.issue.number }}
+  eve_state:
+    description: "State of the issue/pr like closed or opened etc..."
+    default: ${{ github.event.action }}
+  prnum:
+    description: 'PR Number'
+    default: ${{ github.event.number }}
+  prtitle:
+    description: 'Title of the PR'
+    default: ${{ github.event.pull_request.title }}
+
+runs:
+  using: "docker"
+  image: "Dockerfile"
