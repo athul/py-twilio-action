@@ -10,7 +10,7 @@ inputs:
     description: "The twilio number from which the sms should be sent"
     required: true
   to_num:
-    description: "your aws key id"
+    description: "The number which should receive the SMS"
     required: true
   twilio_account_sid:
     description: "Twilio Account SID from twilio console"
@@ -24,12 +24,12 @@ inputs:
   iunum:
     description: 'Issue Number'
     default: ${{ github.event.issue.number }}
-  eve_state:
+  event_action:
     description: "State of the issue/pr like closed or opened etc..."
     default: ${{ github.event.action }}
   prnum:
     description: 'PR Number'
-    default: ${{ github.event.number }}
+    default: ${{ github.event.pull_request.number }}
   prtitle:
     description: 'Title of the PR'
     default: ${{ github.event.pull_request.title }}
